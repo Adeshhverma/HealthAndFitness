@@ -1,0 +1,33 @@
+{%extends 'healthapp/patient/patient_base.html'%}
+{%load static%}
+{%block title%}
+healthapp | ViewExpert
+{%endblock%}
+{%block style%}
+{% static 'healthapp/css/patient_home.css' %}
+{%endblock%}
+
+{%block content%}
+<div class="float-container"style="float: left;">
+    {%for row_data in userdata%}
+   <div class="card" style="width: 18rem;margin: 20px;">
+       <img src="..." class="card-img-top" alt="...">
+       <div class="card-body">
+         <h5 class="card-title">{{row_data.user_name.name}}</h5>
+         <p class="card-text">Experience :- {{row_data.experience}}</p>
+         <p class="card-text">Skills :- {{row_data.skills}}</p>
+         <p class="card-text">About :- {{row_data.about}}</p>
+         <p class="card-text">Highest Qualification :- {{row_data.highest_qualification}}</p>
+         <a href="/booking_request/{{row_data.user_name.user_name}}" class="btn btn-primary">Booking Request</a>
+         <a href="/feedback/{{row_data.user_name.user_name}}" class="btn btn-primary">Feedback</a>
+       </div>
+   </div>
+</div>
+     {%endfor%}
+{%endblock%}
+{%block script2%}
+if(window.history.replaceState){
+    window.history.replaceState(null,null,window.location.href);
+     src="{% static 'healthapp/js/patient_home.js' %}""
+{%endblock%}
+

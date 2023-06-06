@@ -1,0 +1,30 @@
+{%extends 'healthapp/expert/expert_base.html'%}
+{%load static%}
+{%block title%}
+healthapp | ADD TIPS
+{%endblock%}
+{%block style%}
+{% static 'healthapp/css/patient_home.css' %}
+{%endblock%}
+
+{%block content%}
+<br>
+<br>
+<br>
+<form form class="mx-1 mx-md-4 needs-validation" novalidation  method="POST" action="/add_tips/">
+    {%csrf_token%}
+<div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">ADD TIPS</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" <input  type="text" name="txtcontent" class="form-control" placeholder="Please enter your TIPS *" required="required" ></textarea>
+  </div>
+  <center><button type="submit" class="btn btn-primary btn-lg">SUBMIT</button></center>
+  <br>
+  <br>
+</form>
+{%endblock%}
+{%block script2%}
+if(window.history.replaceState){
+    window.history.replaceState(null,null,window.location.href);
+     src="{% static 'healthapp/js/patient_home.js' %}""
+{%endblock%}
+

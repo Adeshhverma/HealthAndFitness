@@ -1,0 +1,55 @@
+{%extends 'healthapp/patient/patient_base.html'%}
+{%load static%}
+{%block title%}
+healthapp | Feedback
+{%endblock%}
+{%block style%}
+{% static 'healthapp/css/patient_home.css' %}
+{%endblock%}
+
+{%block content%}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<form class="mx-1 mx-md-4 needs-validation" novalidation  method="POST" action="/feedback/">
+    {%csrf_token%}
+<input type="hidden"  value="{{exp_name}}" name="txtexpertid">
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group"> <label for="form_message">Message*</label> <textarea id="form_message" name="txtmessage" class="form-control" placeholder="Write your message here." rows="4" required="required" data-error="Please, leave us a message."></textarea> </div>
+    </div>
+    <center>
+        <div class="col-md-4">
+            <label for="inputState" class="form-label">Feedback Rating</label>
+            <select id="inputState" class="form-select">
+              <option selected>Rating</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+        </center>
+        <br>
+        <br>
+        
+    <div class="col-md-12"> <input type="submit" class="btn btn-success btn-send pt-2 btn-block " value="Submit Feedback"<a href="{{'/SubmitFeedback'}}" class="btn btn-primary"></a> </div>
+<br>
+
+</form>
+    <br>
+    <br>
+    <br>
+
+    {%endblock%}
+{%block script2%}
+if(window.history.replaceState){
+    window.history.replaceState(null,null,window.location.href);
+     src="{% static 'healthapp/js/patient_home.js' %}""
+{%endblock%}
+

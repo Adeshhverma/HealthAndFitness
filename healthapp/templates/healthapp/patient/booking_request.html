@@ -1,0 +1,69 @@
+{%extends 'healthapp/patient/patient_base.html'%}
+{%load static%}
+{%block title%}
+healthapp | BookingRequest
+{%endblock%}
+{%block style%}
+{% static 'healthapp/css/patient_home.css' %}
+{%endblock%}
+
+{%block content%}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% if messages %}
+
+        {% for m in messages %}
+
+        <!-- <h3 class="text-{{m.tags}}">{{m}}</h3> -->
+        <div class="row justify-content-center">
+            <div class="col-6">
+            <div class="alert alert-{{m.tags}} alert-dismissible fade show" role="alert">
+            <strong>{{m}}</strong> 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          </div>
+        </div>
+
+        {% endfor %}
+
+
+    {% endif %}
+  
+<form class="mx-1 mx-md-4 needs-validation" novalidation  method="POST" action="/final_booking_request/">
+    {%csrf_token%}
+<input type="date" class="datepicker" data-date-format="mm/dd/yyyy" name="fromdate">
+FROM DATE
+<div>
+<input type="date" class="datepicker" data-date-format="mm/dd/yyyy" name="todate">
+TO DATE
+</div>
+<div>
+    <input type="hidden"  value="{{eid}}" name="txtexpertid">
+    
+    </div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group"> <label for="form_message">Message*</label> <textarea id="form_message" name="txtmessage" class="form-control" placeholder="Write your message here." rows="4" required="required" data-error="Please, leave us a message."></textarea> </div>
+    </div>
+    <div class="col-md-12"> <input type="submit" class="btn btn-success btn-send pt-2 btn-block " value="BOOK REQUEST"<a href="{{'/final_booking_request'}}" class="btn btn-primary"></a> </div>
+</form>
+
+<br>
+<br>
+<br>
+
+{%endblock%}
+
+{%block script2%}
+
+ 
+ 
+if(window.history.replaceState){
+    window.history.replaceState(null,null,window.location.href);
+     src="{% static 'healthapp/js/patient_home.js' %}""
+{%endblock%}
+

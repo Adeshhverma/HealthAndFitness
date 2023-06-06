@@ -1,0 +1,60 @@
+{%extends 'healthapp/expert/expert_base.html'%}
+{%load static%}
+{%block title%}
+healthapp | ComposeMessage
+{%endblock%}
+{%block style%}
+{% static 'healthapp/css/patient_home.css' %}
+{%endblock%}
+
+{%block content%}
+<div class="row" style="margin-top:100px">
+    <div class="container"> <div class=" text-center mt-5 ">
+        <h1>Compose Message</h1>
+    </div>
+    <form form class="mx-1 mx-md-4 needs-validation" novalidation  method="POST" action="/compose_message/">
+        {%csrf_token%}
+    <div class="row ">
+        <div class="col-lg-7 mx-auto">
+            <div class="card mt-2 mx-auto p-4 bg-light">
+                <div class="card-body bg-light">
+                    <div class="container">
+                        <form id="contact-form" role="form">
+                            <div class="controls">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_name">Name*</label> <input id="form_name" type="text" name="txtname" class="form-control" placeholder="Please enter your name *" required="required" data-error="Firstname is required."> </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_lastname">ReceiverID*</label> <input id="form_lastname" type="text" name="txtreceiver" class="form-control" placeholder="Please enter your receiverID *" required="required" data-error="Lastname is required."> </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_lastname">Subject*</label> <input id="form_lastname" type="text" name="txtsubject" class="form-control" placeholder="Please enter your Subject *" required="required" data-error="Lastname is required."> </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group"> <label for="form_message">Content*</label> <textarea id="form_message" name="txtcontent" class="form-control" placeholder="Write your message here." rows="4" required="required" data-error="Please, leave us a message."></textarea> </div>
+                                    </div>
+                                    <div class="col-md-12"> <input type="submit" class="btn btn-success btn-send pt-2 btn-block " value="Send Message"> </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div> <!-- /.8 -->
+        </div> <!-- /.row-->
+    </form>
+    </div>
+</div>
+</div>
+{%endblock%}
+{%block script2%}
+if(window.history.replaceState){
+    window.history.replaceState(null,null,window.location.href);
+     src="{% static 'healthapp/js/patient_home.js' %}""
+{%endblock%}
+

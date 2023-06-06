@@ -1,0 +1,82 @@
+
+
+{%load static%}
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'healthapp/css/patient_home.css' %}">
+    <link rel="stylesheet" href="{% static 'healthapp/css/patient_editprofile.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css' rel='stylesheet'>
+    <title>Edit Profile</title>
+</head>
+
+
+<body id="body-pd">
+  {% include 'healthapp/patient/patient_header.html'%}
+  
+  <form class="needs-validation" novalidate method="POST" action="/patient_editprofile/">
+    {% csrf_token %}
+
+  <div class="container rounded bg-white mt-5 mb-5">
+    
+    <div class="row">
+        
+        <div class="col-md-5 border-right">
+            
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Edit Profile</h4>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-12"><label class="labels"style="font-size: 17px">Name</label><input type="name"name="txtname" class="form-control" value="{{userdata.name}}"></div>
+                   
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12"><label class="labels"style="font-size: 17px">PhoneNumber</label><input type="number"name="txtphone" class="form-control"  value="{{userdata.phone}}"></div>
+                    <div class="col-md-12"><label class="labels"style="font-size: 17px">Address</label><textarea type="text"name="txtaddress" class="form-control" >{{userdata.address}}</textarea></div>
+                    <div class="col-md-12"><label class="labels"style="font-size: 17px">Email ID</label><input type="email"name="txtemail" class="form-control"  value="{{userdata.email}}"></div>
+                   
+                </div>
+               
+                <div class="mt-5 text-center"><button value="submit" class="btn btn-primary profile-button" type="submit">Update Profile</button></div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+</div>
+</div>
+
+</form>
+{% if messages %}
+
+        {% for m in messages %}
+
+        <!-- <h3 class="text-{{m.tags}}">{{m}}</h3> -->
+        <div class="row justify-content-center">
+            <div class="col-6">
+            <div class="alert alert-{{m.tags}} alert-dismissible fade show" role="alert">
+            <strong>{{m}}</strong> 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          </div>
+        </div>
+
+        {% endfor %}
+
+
+    {% endif %}
+  
+
+    {% include 'healthapp/html/footer.html'%} 
+</body>
+<script type= 'text/javascript'src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'></script>
+    <script src="{% static 'healthapp/js/patient_home.js' %}"></script>
+</html>  

@@ -1,0 +1,51 @@
+{%extends 'healthapp/patient/patient_base.html'%}
+{%load static%}
+{%block title%}
+healthapp | BookingDetails
+{%endblock%}
+{%block style%}
+body {
+    background-image: linear-gradient(to right,cyan,pink);
+
+}
+.card{
+    background-image:linear-gradient(to right,cyan,white);
+}
+
+{% static 'healthapp/css/patient_home.css' %}
+{%endblock%}
+
+{%block content%}
+<div class="container" style="margin-top:80px">
+    <center><span style="font-size:30px;font-family:Algerian;color:red;"><h1> Booking Details</h1></span></center>
+    <div class="row">  
+              <form  method="post" action="/booking_detail/" class="needs-validation" novalidate>
+                 {% csrf_token %}
+                 {%for row_data in booking%}
+
+                 <div class="float-container" style="float:left;">
+                     <div class="card" style="width: 18rem; margin:20px">
+                       <img src="#" class="card-img-top" alt="....">
+                       <div class="card-body">
+                         <h5 class="card-title"style="color:blue; font-size:30px">{{row_data.expert_user_name}}</h5>
+                         <p class="card-text"style="color:red; font-size:20px">From-Date: {{row_data.from_date}}</p>
+                         <p class="card-text"style="color:red; font-size:20px">To-Date: {{row_data.to_date}}</p>
+                         <p class="card-text"style="color:red; font-size:20px">Status: {{row_data.status}}</p>
+                       </div>
+                   </div>
+                 </div>
+
+                   {%endfor %}
+
+
+
+              </form>
+    </div> 
+</div>            
+{%endblock%}
+{%block script2%}
+if(window.history.replaceState){
+    window.history.replaceState(null,null,window.location.href);
+     src="{% static 'healthapp/js/patient_home.js' %}""
+{%endblock%}
+

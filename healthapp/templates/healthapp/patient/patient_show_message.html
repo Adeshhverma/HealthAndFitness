@@ -1,0 +1,23 @@
+{%extends 'healthapp/patient/patient_base.html'%}
+{%load static%}
+{%block title%}
+healthapp | Message | Content
+{%endblock%}
+{%block style%}
+{% static 'healthapp/css/patient_home.css' %}
+{%endblock%}
+
+{%block content%}
+<br>
+<br>
+<br>
+<br><br>
+
+<h2>{{msg.content}}</h2>
+{%endblock%}
+{%block script2%}
+if(window.history.replaceState){
+    window.history.replaceState(null,null,window.location.href);
+     src="{% static 'healthapp/js/patient_home.js' %}""
+{%endblock%}
+

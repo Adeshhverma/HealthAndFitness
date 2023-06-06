@@ -1,0 +1,83 @@
+{%extends 'healthapp/expert/expert_base.html'%}
+{%load static%}
+{%block title%}
+healthapp | ADD DETAIL
+{%endblock%}
+{%block style%}
+{% static 'healthapp/css/patient_home.css' %}
+{%endblock%}
+
+{%block content%}
+{% if messages %}
+
+        {% for m in messages %}
+
+        <!-- <h3 class="text-{{m.tags}}">{{m}}</h3> -->
+        <div class="row justify-content-center">
+            <div class="col-6">
+            <div class="alert alert-{{m.tags}} alert-dismissible fade show" role="alert">
+            <strong>{{m}}</strong> 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          </div>
+        </div>
+
+        {% endfor %}
+
+
+    {% endif %}
+<div class="row" style="margin-top:100px">
+    <div class="container"> <div class=" text-center mt-5 ">
+        <h1>ADD EXPERT DETAIL</h1>
+    </div>
+    <form form class="mx-1 mx-md-4 needs-validation" novalidation  method="POST" action="/add_detail/">
+        {%csrf_token%}
+    <div class="row ">
+        <div class="col-lg-7 mx-auto">
+            <div class="card mt-2 mx-auto p-4 bg-light">
+                <div class="card-body bg-light">
+                    <div class="container">
+                        <form id="contact-form" role="form">
+                            <div class="controls">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_name">USERNAME*</label> <input id="form_name" type="text" name="txtusername" class="form-control" placeholder="Please enter your username *" required="required" data-error="Firstname is required."value="{{userdata.user_name}}"> </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_lastname">EXPERIENCE*</label> <input id="form_lastname" type="text" name="txtexperience" class="form-control" placeholder="Please enter your experience *" required="required" data-error="Lastname is required."> </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_lastname">SKILL*</label> <input id="form_lastname" type="text" name="txtskill" class="form-control" placeholder="Please enter your skill *" required="required" data-error="Lastname is required."> </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group"> <label for="form_message">ABOUT EXPERT*</label> <textarea id="form_message" name="txtabout" class="form-control" placeholder="Write about your detail here." rows="4" required="required" data-error="Please, leave us a message."></textarea> </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group"> <label for="form_lastname">HIGHEST QUALIFICATION*</label> <input id="form_lastname" type="text" name="txtqualification" class="form-control" placeholder=" highest qualification *" required="required" data-error="Lastname is required."> </div>
+                                        </div>
+                                        
+                                    <div class="col-md-12"> <input type="submit" class="btn btn-success btn-send pt-2 btn-block " value="Submit Detail"> </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div> <!-- /.8 -->
+        </div> <!-- /.row-->
+    </form>
+    </div>
+</div>
+</div>
+{%endblock%}
+{%block script2%}
+if(window.history.replaceState){
+    window.history.replaceState(null,null,window.location.href);
+     src="{% static 'healthapp/js/patient_home.js' %}""
+{%endblock%}
+

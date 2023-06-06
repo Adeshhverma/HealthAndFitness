@@ -1,0 +1,52 @@
+{%extends 'healthapp/expert/expert_base.html'%}
+{%load static%}
+{%block title%}
+healthapp | ExpertInbox 
+{%endblock%}
+{%block style%}
+{% static 'healthapp/css/patient_home.css' %}
+{%endblock%}
+
+        
+    
+{%block content%}
+<div class="row" style="margin-top:100px">
+    <!-- <div class="col-8"> -->
+    {%if msg%}
+    <form method="POST" action="/delete_message/">
+    {%csrf_token%}
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Select</th>
+            <th scope="col">SenderId</th>
+            <th scope="col">Subject</th>
+            <th scope="col">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+            {%for row_data in msg%}
+            <tr>
+                <th scope="row"><input type="checkbox"Name="chk" id="chk"value="{{row_data.id}}"></th>
+                <td>{{row_data.sender_id}}</td>
+                <td><a href="/show_message/{{row_data.id}}">{{row_data.subject}}</a></td>
+                <td>{{row_data.date}}</td>
+              </tr>
+    
+            {%endfor%}
+            <tr><td colspan="4"><button type="submit"class="btn btn-success btn-send pt-2 btn-block " >Delete</button></td></tr>
+    
+        
+      </tbody>
+    </table>
+    </form>
+    {%endif%}
+        </div>
+        </div>
+{%endblock%}
+{%block script2%}
+if(window.history.replaceState){
+    window.history.replaceState(null,null,window.location.href);
+     src="{% static 'healthapp/js/patient_home.js' %}""
+{%endblock%}
+
